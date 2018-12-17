@@ -5,7 +5,7 @@ export interface Playlist {
   /**
    * HEX colour
    */
-  colour: string,
+  color: string,
   tracks?: Array<Track>
 }
 
