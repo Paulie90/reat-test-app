@@ -1,5 +1,6 @@
-import React, { Component, ReactNode, MouseEvent } from "react";
-import { Playlist } from "../../models/Playlist";
+import React, { PureComponent, ReactNode } from "react";
+
+import { Playlist } from "../playlists.model";
 
 type Props = {
   playlist: Playlist,
@@ -7,7 +8,7 @@ type Props = {
   onSelect(item: Playlist): void,
 }
 
-export default class ListItem extends Component<Props> {
+export default class ListItem extends PureComponent<Props> {
   selectHandler = () => {
     this.props.onSelect(this.props.playlist);
   }

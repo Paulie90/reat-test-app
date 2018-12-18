@@ -3,7 +3,7 @@ export interface Playlist {
   name: string,
   favourite: boolean,
   /**
-   * HEX colour
+   * HEX color
    */
   color: string,
   tracks?: Array<Track>

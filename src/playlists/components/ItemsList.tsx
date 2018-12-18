@@ -1,23 +1,27 @@
-import React, { Component, ReactNode } from "react";
+import React, { PureComponent, ReactNode } from "react";
 
 import ListItem from "./ListItem";
-import { Playlist } from "../../models/Playlist";
+import { Playlist } from "../playlists.model";
 
 type Props = {
   items: Array<Playlist>,
-  selected?: Playlist,
+  selected?: Playlist | null,
   onSelected(item: Playlist): void
 }
 
-export default class ItemsList extends Component<Props> {
-
+export default class ItemsList extends PureComponent<Props> {
   onSelect = (item: Playlist): void => {
     this.props.onSelected(item);
   }
 
   render(): ReactNode {
     const selected = this.props.selected;
-    const itemNodes = this.props.items.map(item => <ListItem playlist={item} key={item.id} onSelect={this.onSelect} selected={selected && selected.id === item.id}></ListItem>)
+    const itemNodes = this.props.items.map(item =>
+      <ListItem playlist={item}
+        key={item.id}
+        onSelect={this.onSelect}
+        selected={selected ? selected.id === item.id : false} />
+    )
 
     return (
       <div className="list-group">

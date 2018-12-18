@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import styles from './App.module.css';
-import { PlaylistsView } from './playlists/components/PlaylistsView';
+import React, { PureComponent } from 'react';
 
-class App extends Component {
+import MusicSearchView from './music/components/MusicSearchView';
+import { DefaultLayout } from './layouts/DefaultLayout';
+import { MusicSearchProvider } from './services/MusicSearchProvider';
+
+class App extends PureComponent {
   render() {
     return (
-      <div className={`container ${styles.App}`}>
-        <div className="row">
-          <div className="col">
-            <PlaylistsView></PlaylistsView>
-          </div>
-        </div>
-      </div>
+      <MusicSearchProvider>
+        <DefaultLayout>
+          <MusicSearchView />
+        </DefaultLayout>
+      </MusicSearchProvider>
     );
   }
 }

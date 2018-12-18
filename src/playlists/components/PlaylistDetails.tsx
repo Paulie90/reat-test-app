@@ -1,6 +1,6 @@
-import React, { Component, ReactNode, ChangeEvent } from "react";
+import React, { PureComponent, ReactNode, ChangeEvent } from "react";
 
-import { Playlist } from "../../models/Playlist";
+import { Playlist } from "../playlists.model";
 
 type State = {
   isEditing?: boolean,
@@ -12,7 +12,7 @@ type Props = {
   onSave(draft: Playlist): void
 }
 
-export default class PlaylistDetails extends Component<Props, State> {
+export default class PlaylistDetails extends PureComponent<Props, State> {
   state: State = {
     playlist: this.props.playlist
   }

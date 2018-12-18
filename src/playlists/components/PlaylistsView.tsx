@@ -1,15 +1,15 @@
-import React, { Component, ReactNode, Props } from "react";
+import React, { PureComponent, ReactNode } from "react";
 
-import ItemsList from "./ItemsList";
 import PlaylistDetails from "./PlaylistDetails";
-import { Playlist } from "../../models/Playlist";
+import FilteredItems from "./FilteredItems";
+import { Playlist } from "../playlists.model";
 
 type State = {
   items: Array<Playlist>,
-  selected?: Playlist
+  selected?: Playlist | null
 }
 
-export class PlaylistsView extends Component<{}, State> {
+export class PlaylistsView extends PureComponent<{}, State> {
   state: State = {
     items: [
       {
@@ -41,7 +41,7 @@ export class PlaylistsView extends Component<{}, State> {
 
   onSelect = (item: Playlist): void => {
     this.setState({
-      selected: item
+      selected: this.state.selected && this.state.selected.id === item.id ? null : item
     });
   }
 
@@ -57,7 +57,7 @@ export class PlaylistsView extends Component<{}, State> {
     return (
       <div className="row">
         <div className="col">
-          <ItemsList items={this.state.items} selected={this.state.selected} onSelected={this.onSelect} />
+          <FilteredItems items={this.state.items} selected={this.state.selected} onSelect={this.onSelect} />
         </div>
         <div className="col">
           {this.state.selected ?
