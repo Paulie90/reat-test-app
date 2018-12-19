@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 
 import SearchField from "../../shared/components/SearchField";
 
@@ -6,18 +6,8 @@ type Props = {
   onSearch(query: string): void,
 }
 
-type State = {
-
-}
-
-export default class SearchForm extends PureComponent<Props, State> {
-  onSearch = (query: string): void => {
-    this.props.onSearch(query);
-  }
-
-  render() {
-    return (
-      <SearchField onSearch={this.onSearch} />
-    );
-  }
-}
+export const SearchForm = (props: Props) => {
+  return (
+    <SearchField onSearch={props.onSearch} />
+  );
+};

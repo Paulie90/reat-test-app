@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 
 import ItemsList from "./ItemsList";
 import { Playlist } from "../playlists.model";
+
 import SearchField from "../../shared/components/SearchField";
 
 type Props = {

@@ -1,19 +1,22 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router';
 
-import MusicSearchView from './music/components/MusicSearchView';
+import { MusicSearchView } from './music/components/MusicSearchView';
 import { DefaultLayout } from './layouts/DefaultLayout';
-import { MusicSearchProvider } from './services/MusicSearchProvider';
+import { PlaylistsView } from './playlists/components/PlaylistsView';
 
-class App extends PureComponent {
-  render() {
-    return (
-      <MusicSearchProvider>
-        <DefaultLayout>
-          <MusicSearchView />
-        </DefaultLayout>
-      </MusicSearchProvider>
-    );
-  }
+export const App = () => {
+  return (
+    <DefaultLayout>
+      <Switch>
+        <Redirect path='/' exact={true} to='/music' />
+
+        <Route path='/music' component={MusicSearchView} />
+        <Route path='/playlists' component={PlaylistsView} />
+
+        {/* NOT FOUND */}
+        <Redirect path='**' to='/music' />
+      </Switch>
+    </DefaultLayout>
+  );
 }
-
-export default App;

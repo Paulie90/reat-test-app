@@ -8,18 +8,12 @@ type Props = {
   albums: Array<Album>
 }
 
-type State = {
+export const AlbumGrid = (props: Props) => {
+  const albumNodes = props.albums.map(album => <AlbumCard album={album} key={album.id} />);
 
-}
-
-export default class AlbumGrid extends PureComponent<Props, State> {
-  render() {
-    const albumNodes = this.props.albums.map(album => <AlbumCard album={album} key={album.id} />);
-
-    return (
-      <div className="card-group">
-        {albumNodes}
-      </div>
-    );
-  }
+  return (
+    <div className="card-group">
+      {albumNodes}
+    </div>
+  );
 }

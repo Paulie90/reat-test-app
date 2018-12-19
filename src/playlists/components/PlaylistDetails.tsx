@@ -19,7 +19,7 @@ export default class PlaylistDetails extends PureComponent<Props, State> {
 
   static getDerivedStateFromProps(props: Props, nextState: State): Partial<Props> {
     return {
-      playlist: nextState.playlist.id === props.playlist.id ? nextState.playlist : props.playlist
+      playlist: nextState.isEditing ? nextState.playlist : props.playlist
     }
   }
 

@@ -4,15 +4,9 @@ type Props = {
   inputRef?: RefObject<HTMLInputElement>,
   className?: HTMLDivElement["className"],
   onSearch(query: string): void
-}
+};
 
-type State = {
-
-}
-
-export default class SearchField extends PureComponent<Props, State> {
-  state = {};
-
+export default class SearchField extends PureComponent<Props> {
   inputRef = this.props.inputRef || createRef<HTMLInputElement>();
   debounceHandler?: NodeJS.Timeout;
 
